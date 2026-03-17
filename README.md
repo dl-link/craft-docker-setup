@@ -5,7 +5,7 @@ One-command setup for [Craft Agents](https://github.com/lukilabs/craft-agents-os
 ## Quick Start
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<your-repo>/main/setup.sh -o setup.sh
+curl -fsSL https://raw.githubusercontent.com/dl-link/craft-docker-setup/main/setup.sh -o setup.sh
 chmod +x setup.sh
 ./setup.sh
 ```
@@ -13,7 +13,7 @@ chmod +x setup.sh
 Or clone and run:
 
 ```bash
-git clone https://github.com/<your-repo>/craft-docker-setup.git
+git clone https://github.com/dl-link/craft-docker-setup.git
 cd craft-docker-setup
 ./setup.sh
 ```
