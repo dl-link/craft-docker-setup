@@ -298,7 +298,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends git ca-certific
 WORKDIR /build
 COPY craft-agents-oss/ .
 
-RUN bun install --frozen-lockfile
+RUN bun install
 DOCKERFILE_HEAD
 
   # Write the build command with resolved architecture
@@ -339,7 +339,6 @@ write_compose_file() {
   info "Generating docker-compose.yml..."
 
   cat > docker-compose.yml <<'COMPOSE'
-version: "3.8"
 services:
   craft-server:
     build:
