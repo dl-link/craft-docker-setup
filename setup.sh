@@ -304,6 +304,18 @@ DOCKERFILE_HEAD
   # Write the build command with resolved architecture
   echo "RUN bun run server:build:linux-${build_arch}" >> Dockerfile
 
+  # Add step to patch missing production deps that build-server.ts doesn't include
+  cat >> Dockerfile <<'DOCKERFILE_PATCH'
+
+# Patch: copy production deps missing from build-server.ts curated list
+RUN for pkg in markitdown-js @mariozechner/pi-ai @mariozechner/pi-coding-agent open; do \
+      if [ -d "node_modules/$pkg" ] && [ ! -d "dist/server/node_modules/$pkg" ]; then \
+        mkdir -p "dist/server/node_modules/$(dirname $pkg)" && \
+        cp -r "node_modules/$pkg" "dist/server/node_modules/$pkg"; \
+      fi; \
+    done
+DOCKERFILE_PATCH
+
   cat >> Dockerfile <<'DOCKERFILE_TAIL'
 
 # Stage 2: Runtime
