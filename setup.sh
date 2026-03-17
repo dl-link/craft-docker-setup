@@ -292,7 +292,7 @@ write_dockerfile() {
 # Stage 1: Build the server distribution
 FROM oven/bun:1.3-slim AS builder
 
-RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates && \
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates curl unzip && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
